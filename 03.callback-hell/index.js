@@ -1,3 +1,4 @@
+// Pythagoras
 function pythagoras (num1, num2, num3){
     return sqr(num1) + sqr(num2) === sqr(num3);
 }
@@ -14,6 +15,7 @@ const triangle = pythagoras(3,4,5);
 console.log(triangle);
 
 
+// Timeout testing
 console.log("first call");
 setTimeout(()=>{
     console.log("second call");
@@ -21,6 +23,8 @@ setTimeout(()=>{
 console.log("third call");
 // first call > third call > second call
 
+
+// Background changer
 let changesCounter = 1;
 function changeColor(time, color, callback, reject){
     if(time<1000){
