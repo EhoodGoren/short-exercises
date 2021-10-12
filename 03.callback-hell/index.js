@@ -21,39 +21,44 @@ setTimeout(()=>{
 console.log("third call");
 // first call > third call > second call
 
-let changesCounter = 0;
+let changesCounter = 1;
 function changeColor(time, color, callback, reject){
     if(time<1000){
         time = 1000;
     }
-    if(changesCounter >= 3){
+    if(changesCounter >= 8){
         console.log("Reached max attempts");
         return
     }
     setTimeout(() => {
         const rnd = Math.floor(Math.random() * 10) + 1;
         const body = document.querySelector("body");
-        if(rnd > 0){
+        if(rnd > 5){
             changesCounter++;
             callback()
             body.style.backgroundColor = color;
         }
         else{
-            console.log("your request was rejected ☹")
             reject()
         }
     }, time)
 }
 
+const rejectFunc = () => {
+    console.log(`request ${changesCounter} was rejected ☹`);
+}
+
 changeColor(1000, "green", () => {
     changeColor(1000, "red", () => {
         changeColor(1000, "blue", () => {
-        }, () => {
-            console.log("failed with blue");
-        });
-    }, () => {
-        console.log("failed with red");
-    })
-}, () => {
-    console.log("failed with green");
-});
+            changeColor(1000, "brown", () => {
+                changeColor(1000, "black", () => {
+                    changeColor(1000, "yellow", () => {
+                        changeColor(1000, "cyan", () => {
+                        }, rejectFunc)
+                    }, rejectFunc)
+                }, rejectFunc)
+            }, rejectFunc)
+        }, rejectFunc);
+    }, rejectFunc);
+}, rejectFunc);
