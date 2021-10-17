@@ -5,6 +5,7 @@ import * as state from "./helpers/state";
 
 const numField = document.querySelector(".result");
 const operations = ["+", "-", "X", "/", "="];
+let afterCalc = false;
 
 const calcContainer = document.querySelector(".container");
 calcContainer.addEventListener("click", calcClick);
@@ -16,6 +17,9 @@ function calcClick(event){
     if(!isNaN(clickedKey)){
         displayNum(clickedKey);
     }
+    else if(clickedKey === "Del"){
+        clearCalc();
+    }
     else {
         for(let operation of operations){
             if (operation === clickedKey){
@@ -26,6 +30,10 @@ function calcClick(event){
 }
 
 function displayNum(num){
+    if(afterCalc){
+        afterCalc = false;
+        clearCalc();
+    }
     numField.value = numField.value + num;
 }
 
@@ -64,5 +72,13 @@ function saveNumber(){
 function evaluate(){
     if(state.state.secondNumber !== ""){
         numField.value = math.equals(parseInt(state.state.firstNumber), parseInt(state.state.secondNumber), state.state.callBack);
+        afterCalc = true;
     }
+}
+
+function clearCalc(){
+    state.state.firstNumber = "";
+    state.state.secondNumber = "";
+    state.state.callBack = "";
+    numField.value = "";
 }
