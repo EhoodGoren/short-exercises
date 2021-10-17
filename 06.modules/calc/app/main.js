@@ -39,6 +39,11 @@ function displayNum(num){
 
 function handleOperation(operation){
     if(numField.value === "") return;
+    if(afterCalc){
+        state.state.firstNumber = numField.value;
+        state.state.secondNumber = "";
+        afterCalc = false;
+    }
     saveNumber();
     switch(operation){
         case "+":
