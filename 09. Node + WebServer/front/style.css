@@ -1,0 +1,19 @@
+body {
+    background-color: bisque !important;
+}
+
+*{
+    margin-left: 3px;
+}
+
+.form_labels, #result{
+    font-size: large;
+}
+
+.introduction {
+    font-size: 20px;
+}
+
+#submit {
+    margin-top: 15px;
+}

@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
+<section id="all_form">
+    <h1>Cyber4s admission form</h1>
+    <p class="introduction">
+        This is an admission form for our unique program, Cyber4s.
+    </p>
+    <p class="introduction">
+        Fill your information and we'll let you know if you got accepted.
+    </p>
     <form>
         <label for="name" class="form_labels">Name</label><br>
         <input id="name" placeholder="Enter your name..." class="form_inputs"
@@ -20,8 +29,11 @@
         <input id="ability" placeholder="Specify one of your abilities..."
             class="form_inputs" name="ability" type="text"><br>
         <button id="submit">Submit</button>
-    </form>
-
+    </form><br>
+    <div id="result">
+        Result:
+    </div>
+</section>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js" integrity="sha512-xYHcfaQeUiKHs9YsHqjpyLaHnh+q7y8kYuOGdh5FkJeK7Z+dZct7Yoa7h+PtsrKRh03t8eJZuSeCN7b0dkrFwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src='./index.js' defer ></script>

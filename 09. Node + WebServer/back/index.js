@@ -19,14 +19,14 @@ const server = http.createServer((req, res) => {
         if (goodData === "good"){
             // res.writeHead(200, "ok", {"Content-Type":"text"});
             res.writeHead(200, "ok", headers);
-            res.write("welcome to Cyber4s!");
+            res.write("accepted");
             res.end();
             return
         }
         else {
             // res.writeHead(200, "ok", {"Content-Type":"text"})
             res.writeHead(200, "ok", headers)
-            res.write("Sorry you got declined");
+            res.write("declined");
             res.end();
             return
         }
@@ -73,7 +73,7 @@ function checkAge(age){
 function checkAbility(abiltiy){
     const goodAbilities = db.ability;
     for(let goodAbility of goodAbilities){
-        if(abiltiy === goodAbility){
+        if(abiltiy.toLowerCase() === goodAbility.toLowerCase()){
             return true;
         }
     }
