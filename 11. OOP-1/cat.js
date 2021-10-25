@@ -4,21 +4,25 @@ const cat = {
     lonliness : 0,
     happiness : 0,
     feed(count = 1){
+        if(chooseToIgnore()) return this;
         this.tiredness += count;
         this.hunger -= count;
         return this;
     },
     sleep(count = 1){
+        if(chooseToIgnore()) return this;
         this.tiredness -= count;
         this.happiness += count;
         return this;
     },
     pet(count = 1){
+        if(chooseToIgnore()) return this;
         this.lonliness -= count;
         this.happiness += count;
         return this;
     },
     play(count = 1){
+        if(chooseToIgnore()) return this;
         this.happiness += count;
         this.lonliness -= count;
         this.tiredness += count;
@@ -29,7 +33,6 @@ const cat = {
         for(let property in this){
             const catProperty = this[property];
             if(typeof(catProperty) !== 'number' || catProperty === 0) continue;
-            console.log(catProperty, property)
             if(catProperty > 0){
                 catMood = catMood.concat(`${emotions[property][0]}, `);
             }
@@ -50,3 +53,9 @@ const emotions = {
 }
 
 cat.feed().pet(2).play().play().mood();
+
+function chooseToIgnore(){
+    const random = Math.random();
+    if(random > 0.5) return true;
+    return false;
+}
