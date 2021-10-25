@@ -3,25 +3,25 @@ const cat = {
     hunger : 0,
     lonliness : 0,
     happiness : 0,
-    feed(){
-        this.tiredness++;
-        this.hunger--;
+    feed(count = 1){
+        this.tiredness += count;
+        this.hunger -= count;
         return this;
     },
-    sleep(){
-        this.tiredness--;
-        this.happiness++;
+    sleep(count = 1){
+        this.tiredness -= count;
+        this.happiness += count;
         return this;
     },
-    pet(){
-        this.lonliness--;
-        this.happiness++;
+    pet(count = 1){
+        this.lonliness -= count;
+        this.happiness += count;
         return this;
     },
-    play(){
-        this.happiness++;
-        this.lonliness--;
-        this.tiredness++;
+    play(count = 1){
+        this.happiness += count;
+        this.lonliness -= count;
+        this.tiredness += count;
         return this;
     },
     mood(){
@@ -29,11 +29,12 @@ const cat = {
         for(let property in this){
             const catProperty = this[property];
             if(typeof(catProperty) !== 'number' || catProperty === 0) continue;
+            console.log(catProperty, property)
             if(catProperty > 0){
-                catMood = catMood.concat(`${emotions[property][1]}, `);
+                catMood = catMood.concat(`${emotions[property][0]}, `);
             }
             else{
-                catMood = catMood.concat(`${emotions[property][0]}, `);
+                catMood = catMood.concat(`${emotions[property][1]}, `);
             }
         }
         catMood = catMood.slice(0, -2);
@@ -42,10 +43,10 @@ const cat = {
 }
 
 const emotions = {
-    lonliness:['lonely'],
-    hunger : ['hungry', 'full'],
     tiredness : ['tired', 'full of energy'],
-    happiness : ['sad', 'happy'],
+    hunger : ['hungry', 'full'],
+    lonliness:['lonely', 'loved'],
+    happiness : ['happy', 'sad'],
 }
 
-cat.feed().pet().play().play().mood();
+cat.feed().pet(2).play().play().mood();
